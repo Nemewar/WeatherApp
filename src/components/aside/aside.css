@@ -1,0 +1,101 @@
+.contenedor-aside {
+    background-color: #1E213A;
+    width: 459px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.aside{
+    margin: auto 0;
+    padding: 3rem;
+}
+
+.aside .top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 1.5rem;
+    background-color: #6E707A;
+    color: white;
+    cursor: pointer;
+}
+
+
+.top .placeIcon {
+    padding: 1rem;
+    background-color: #6E707A;
+    border-radius: 3rem;
+    color: white;
+    width: 35px;
+    height: 35px;
+}
+
+.contenedor-img {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.contenedor-img img {
+    width: 150px;
+    height: 182px;
+}
+
+.temperatura {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6.5rem;
+    margin-bottom: 5rem;
+}
+
+.temperatura p {
+    color: white;
+}
+
+.temperatura .c {
+    color: gray;
+}
+
+.today-weatherName {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.today-weatherName p {
+    font-size: 3rem;
+    color: #A09FB1;
+}
+
+.today-fecha {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1.8rem;
+    color: #88869D;
+    margin-top: 5rem;
+    margin-bottom: 32px;
+}
+
+.today-location {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.today-location p {
+    color: #88869D;
+    font-size: 1.8rem;
+}
+
+.today-location .todayIcon {
+    color: #88869D;
+}

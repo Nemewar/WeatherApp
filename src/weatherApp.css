@@ -1,0 +1,18 @@
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 16px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+p{
+    margin: 0;
+}
+
+.contenedor-todo{
+    display: flex;
+}
+
