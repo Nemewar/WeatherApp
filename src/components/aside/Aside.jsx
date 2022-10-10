@@ -1,35 +1,32 @@
 import { BiCurrentLocation } from "react-icons/bi"
 import { TbTemperatureCelsius } from "react-icons/tb"
 import { GoLocation } from "react-icons/go"
-import { useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 
 
 import "./aside.css"
 
-import { resolveCurrentWeather } from "../../helpers/resolveCurrentWeather"
+import { resolveTodayWeather } from "../../helpers/resolveWeather"
+import { WeatherContext } from "../context/WeatherContext"
 
 
 
 export const Aside = () => {
 
-    const [clima, setClima] = useState({
-        placeName: "",
-        description: "",
-        temp: 0,
-        img: ""
-    })
-
+    const {localWeather,setlocalWeather} = useContext(WeatherContext);
     
     useEffect(() => {
-        resolveCurrentWeather()
-            .then(({ description, temp,img, placeName }) => {
+        resolveTodayWeather()
+            .then(({ description, temp,img, placeName,latitude,longitude }) => {
                 const temC = temp-273.15;
-                setClima({
-                    ...clima,
+                setlocalWeather({
+                    ...localWeather,
                     description,
                     temp: temC.toFixed(2),
                     img,
-                    placeName
+                    placeName,
+                    latitude,
+                    longitude
                 })
             })
             .catch(err => console.log(err))
@@ -49,14 +46,14 @@ export const Aside = () => {
                         />
                     </div>
                     <div className="contenedor-img">
-                        <img src={clima.img} />
+                        <img src={localWeather.img} />
                     </div>
                     <div className="temperatura">
-                        <p>{clima.temp}</p>
+                        <p>{localWeather.temp}</p>
                         <TbTemperatureCelsius className="c" />
                     </div>
                     <div className="today-weatherName">
-                        <p>{clima.description}</p>
+                        <p>{localWeather.description}</p>
                     </div>
                     <div className="today-fecha">
                         <p>Hoy</p>
@@ -65,7 +62,7 @@ export const Aside = () => {
                     </div>
                     <div className="today-location">
                         <GoLocation className="todayIcon" />
-                        <p>{clima.placeName}</p>
+                        <p>{localWeather.placeName}</p>
                     </div>
                 </div>
             </div>

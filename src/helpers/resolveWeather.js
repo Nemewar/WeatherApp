@@ -17,49 +17,61 @@ const currentLocation = async () => {
             //pero si estamos en produccion tener que estar en una pagina https)
             navigator.geolocation.getCurrentPosition(
                 position => {
-                    const { latitude,longitude} = position.coords;
-                    console.log(position.coords)
+                    const { latitude, longitude } = position.coords;
                     resolve({
                         latitude,
                         longitude
                     })
                 },
-                (err)=>{
+                (err) => {
                     reject({
                         err
                     })
-                },{
-                    timeout: 5000,
-                    maximumAge: 0
-                })
+                }, {
+                timeout: 5000,
+                maximumAge: 0
+            })
         }
     })
 }
 
 
-const currentWeather = async (lat, lng) => {
+const todayWeather = async (lat, lng) => {
 
     const apikey = import.meta.env.VITE_OPENWEATHER_KEY;
-    
+
     const respuesta = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apikey}`
     )
-
     return respuesta;
+}
+
+export const forecastWeather = async (lat, lng) => {
+
+    const apikey = import.meta.env.VITE_OPENWEATHER_KEY;
+
+    const respuesta = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${apikey}`
+    )
+
+
+    return respuesta
 }
 
 
 
-export const resolveCurrentWeather = async () => {
+export const resolveTodayWeather = async () => {
 
     try {
         const { latitude, longitude } = await currentLocation();
-        const {data} = await currentWeather(latitude, longitude);
+        const { data } = await todayWeather(latitude, longitude);
         const clima = {
             description: data.weather[0].description,
             img: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
             temp: data.main.temp,
-            placeName: data.name
+            placeName: data.name,
+            latitude,
+            longitude
         }
         
         return clima
@@ -68,5 +80,23 @@ export const resolveCurrentWeather = async () => {
         console.log(err)
     }
 
+}
+
+export const resolveForecastWeather = async (latitude,longitude) => {
+    try{
+        const {data} = await forecastWeather(latitude,longitude);
+        let indices = [7,16,23,31,39];
+        const listForeCast = data.list.filter( (i,index)=>{
+
+            if(indices.includes(index)){
+
+                return i;
+            }
+        })
+        return listForeCast;
+    }
+    catch(err){
+        console.log(err)
+    }
 }
 

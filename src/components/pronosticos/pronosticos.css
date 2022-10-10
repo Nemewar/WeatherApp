@@ -1,0 +1,20 @@
+.pronosticos {
+    margin: auto 0;
+    padding: 11rem;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.pronostico {
+    background-color: #1E213A;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 1rem;
+}
+
+.pronostico .temp{
+    display: flex;
+    justify-content: center;
+}
