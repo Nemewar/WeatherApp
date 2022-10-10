@@ -5,8 +5,7 @@ import { useEffect, useState } from "react"
 
 
 import "./aside.css"
-import { currentLocation } from "../../helpers/currentLocation"
-import { currentWeather } from "../../helpers/currentWeather"
+
 import { resolveCurrentWeather } from "../../helpers/resolveCurrentWeather"
 
 
@@ -14,18 +13,23 @@ import { resolveCurrentWeather } from "../../helpers/resolveCurrentWeather"
 export const Aside = () => {
 
     const [clima, setClima] = useState({
+        placeName: "",
         description: "",
-        temp: 0
+        temp: 0,
+        img: ""
     })
 
+    
     useEffect(() => {
-        resolveCurrentWeather(currentLocation, currentWeather)
-            .then(({ description, temp }) => {
+        resolveCurrentWeather()
+            .then(({ description, temp,img, placeName }) => {
                 const temC = temp-273.15;
                 setClima({
                     ...clima,
                     description,
-                    temp: temC.toFixed(2)
+                    temp: temC.toFixed(2),
+                    img,
+                    placeName
                 })
             })
             .catch(err => console.log(err))
@@ -45,7 +49,7 @@ export const Aside = () => {
                         />
                     </div>
                     <div className="contenedor-img">
-                        <img src="/assets/img/shower.png" />
+                        <img src={clima.img} />
                     </div>
                     <div className="temperatura">
                         <p>{clima.temp}</p>
@@ -61,7 +65,7 @@ export const Aside = () => {
                     </div>
                     <div className="today-location">
                         <GoLocation className="todayIcon" />
-                        <p>Lima</p>
+                        <p>{clima.placeName}</p>
                     </div>
                 </div>
             </div>

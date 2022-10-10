@@ -6,6 +6,7 @@ import "./weatherApp.css"
 
 export const WeatherApp = () => {
 
+
   return (
     <>
       <div className='contenedor-todo'>
