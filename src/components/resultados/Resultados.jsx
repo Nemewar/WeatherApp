@@ -3,6 +3,7 @@
 import { useContext } from "react"
 import { WeatherContext } from "../context/WeatherContext"
 import { Pronosticos } from "../pronosticos/Pronosticos"
+import { ResultadosHoy } from "../resultadosHoy/ResultadosHoy"
 import "./resultados.css"
 
 export const Resultados = () => {
@@ -21,7 +22,7 @@ export const Resultados = () => {
                     />
                 }
                 <div className="resultados-hoy">
-
+                    <ResultadosHoy />
                 </div>
             </div>
         </>

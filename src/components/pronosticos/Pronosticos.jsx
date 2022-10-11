@@ -22,10 +22,11 @@ export const Pronosticos = ({ latitude, longitude }) => {
     return (
         <>
             {(listForeCast) &&
+
                 <div className="pronosticos">
                     {listForeCast.map(({ main, weather, dt }, index) => {
                         const img = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
-                        const temp = (main.temp-273.15).toFixed(2);
+                        const temp = (main.temp - 273.15).toFixed(2);
                         console.log(main)
                         return (
                             <div
@@ -40,6 +41,7 @@ export const Pronosticos = ({ latitude, longitude }) => {
                         )
                     })}
                 </div>
+
             }
 
         </>

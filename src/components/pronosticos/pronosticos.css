@@ -1,9 +1,14 @@
 .pronosticos {
-    margin: auto 0;
-    padding: 11rem;
+    margin-top: 5rem;
     display: flex;
     justify-content: center;
     gap: 5rem;
+}
+
+@media(max-width:1160px){
+    .pronosticos{
+        flex-wrap: wrap;
+    }
 }
 
 .pronostico {
@@ -12,6 +17,7 @@
     flex-direction: column;
     color: white;
     padding: 1rem;
+    overflow: auto;
 }
 
 .pronostico .temp{

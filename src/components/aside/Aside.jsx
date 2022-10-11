@@ -13,12 +13,12 @@ import { WeatherContext } from "../context/WeatherContext"
 
 export const Aside = () => {
 
-    const {localWeather,setlocalWeather} = useContext(WeatherContext);
-    
+    const { localWeather, setlocalWeather } = useContext(WeatherContext);
+
     useEffect(() => {
         resolveTodayWeather()
-            .then(({ description, temp,img, placeName,latitude,longitude }) => {
-                const temC = temp-273.15;
+            .then(({ description, temp, img, placeName, latitude, longitude, todayHightlights }) => {
+                const temC = temp - 273.15;
                 setlocalWeather({
                     ...localWeather,
                     description,
@@ -26,7 +26,8 @@ export const Aside = () => {
                     img,
                     placeName,
                     latitude,
-                    longitude
+                    longitude,
+                    todayHightlights
                 })
             })
             .catch(err => console.log(err))

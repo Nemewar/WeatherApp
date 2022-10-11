@@ -71,7 +71,13 @@ export const resolveTodayWeather = async () => {
             temp: data.main.temp,
             placeName: data.name,
             latitude,
-            longitude
+            longitude,
+            todayHightlights:{
+                wind: data.wind.speed,
+                humidity: data.main.humidity,
+                visibility: data.visibility, 
+                pressure: data.main.pressure
+            }
         }
         
         return clima

@@ -4,7 +4,18 @@
     background-color: #100E1D;
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    gap: 5rem;
+
 }
+
+
+@media(max-width:480px){
+    .contenedor-resultados{
+        height: 100%;
+    }
+}
+
 
 
 

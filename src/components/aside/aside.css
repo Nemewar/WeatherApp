@@ -7,6 +7,13 @@
     overflow: auto;
 }
 
+@media(max-width:480px){
+    .contenedor-aside{
+        max-width: 100%;
+        height: 100%;
+    }
+}
+
 .aside{
     margin: auto 0;
     padding: 3rem;

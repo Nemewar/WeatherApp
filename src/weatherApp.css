@@ -16,3 +16,9 @@ p{
     display: flex;
 }
 
+@media(max-width:480px){
+    .contenedor-todo{
+        flex-direction: column;
+    }
+}
+
