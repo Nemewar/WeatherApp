@@ -5,11 +5,11 @@ import "./resultadosHoy.css"
 
 export const ResultadosHoy = () => {
 
-    const { localWeather: { todayHightlights } } = useContext(WeatherContext);
+    const { localWeather: { current } } = useContext(WeatherContext);
 
     return (
         <>
-            {(todayHightlights) &&
+            {(current) &&
                 <div className="container-container">
                     <div className="contenedor-resultadosHoy">
                         <div className="title">
@@ -17,19 +17,19 @@ export const ResultadosHoy = () => {
                         </div>
                         <div className="hightlight">
                             <p className="name">Wind status</p>
-                            <p className="result">{todayHightlights.wind} mps</p>
+                            <p className="result">{current.wind} mps</p>
                         </div>
                         <div className="hightlight">
                             <p className="name">Humidity</p>
-                            <p className="result">{todayHightlights.humidity}%</p>
+                            <p className="result">{current.humidity}%</p>
                         </div>
                         <div className="hightlight">
                             <p className="name">Visibility</p>
-                            <p className="result">{todayHightlights.visibility}m</p>
+                            <p className="result">{current.visibility}m</p>
                         </div>
                         <div className="hightlight">
                             <p className="name">Air pressure</p>
-                            <p className="result">{todayHightlights.pressure}hpa</p>
+                            <p className="result">{current.pressure}hpa</p>
                         </div>
                     </div>
                 </div>

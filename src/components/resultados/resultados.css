@@ -4,18 +4,22 @@
     background-color: #100E1D;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     overflow: auto;
     gap: 5rem;
-
 }
 
-
-@media(max-width:480px){
+@media(max-width:1600px){
     .contenedor-resultados{
-        height: 100%;
+        justify-content: unset;
     }
 }
 
 
 
 
+@media(max-width:480px) {
+    .contenedor-resultados {
+        height: 100%;
+    }
+}

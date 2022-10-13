@@ -16,9 +16,6 @@
         display: flex;
         flex-direction: column;
     }
-    .title{
-        grid-column: unset;
-    }
 }
 
 .title{

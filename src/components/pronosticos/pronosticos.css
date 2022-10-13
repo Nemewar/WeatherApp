@@ -2,13 +2,8 @@
     margin-top: 5rem;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 5rem;
-}
-
-@media(max-width:1160px){
-    .pronosticos{
-        flex-wrap: wrap;
-    }
 }
 
 .pronostico {

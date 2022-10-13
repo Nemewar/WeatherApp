@@ -1,19 +1,35 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Aside } from './components/aside/Aside'
-import { WeatherProvider } from './components/context/WeatherProvider'
+import { WeatherContext } from './components/context/WeatherContext'
+
 import { Resultados } from './components/resultados/Resultados'
+import { resolveLocalWeather } from './helpers/resolveWeather'
+
 
 import "./weatherApp.css"
 
 export const WeatherApp = () => {
 
+  const { setlocalWeather } = useContext(WeatherContext);
+
+  useEffect(() => {
+    resolveLocalWeather()
+      .then(res => {
+        console.log(res)
+        setlocalWeather(res)
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+
+
 
   return (
-    <WeatherProvider>
-      <div className='contenedor-todo'>
-        <Aside />
-        <Resultados />
-      </div>
-    </WeatherProvider>
+
+    <div className='contenedor-todo'>
+      <Aside />
+      <Resultados />
+    </div>
+
   )
 }

@@ -1,38 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import { resolveForecastWeather } from '../../helpers/resolveWeather'
+import React, { useContext} from 'react'
 import { TbTemperatureCelsius } from "react-icons/tb"
 
 import "./pronosticos.css"
+import { diasSiguientes } from '../../helpers/diasSiguientes'
+import { WeatherContext } from '../context/WeatherContext'
 
-export const Pronosticos = ({ latitude, longitude }) => {
+export const Pronosticos = () => {
 
-    const [listForeCast, setListForeCast] = useState([])
-
-
-    useEffect(() => {
-        resolveForecastWeather(latitude, longitude)
-            .then(res => setListForeCast(res))
-            .catch(err => console.log(err))
-
-    }, [])
-
-
-
+    const {localWeather:{daily}} = useContext(WeatherContext);
 
     return (
         <>
-            {(listForeCast) &&
+            {(daily) &&
 
                 <div className="pronosticos">
-                    {listForeCast.map(({ main, weather, dt }, index) => {
-                        const img = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
-                        const temp = (main.temp - 273.15).toFixed(2);
-                        console.log(main)
+                    {daily.map(({ temp, img, dt }, index) => {
                         return (
                             <div
                                 className="pronostico"
                                 key={dt}>
-                                <p>{index + 1}</p>
+                                <p>{diasSiguientes()[index]}</p>
                                 <img src={img}></img>
                                 <div className='temp'>
                                     <p>{temp}<TbTemperatureCelsius /></p>
